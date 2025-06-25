@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Camera Club</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+
+  <style>
+    body {
+      font-family: 'Bebas Neue', sans-serif;
+    }
+
+    nav.navbar {
+      background-color: #BB35AE;
+    }
+
+    .navbar-nav .nav-link {
+      background-color: #BB35AE;
+      color: white;
+      padding: 15px 25px;
+      border-radius: 10px;
+      margin-right: 10px;
+      transition: background-color 0.3s ease;
+    }
+
+    .navbar-nav .nav-link:hover {
+      background-color:#E99FF4;
+      color: white !important;
+    }
+    .interactive-btn {
+    transition: all 0.5s ease;
+    font-weight: bold;
+    font-size: 1.2rem;
+  }
+
+  .interactive-btn:hover  {
+      background-color: #E99FF4;
+      color: white !important;
+      transition: background-color 0.5s ease;
+    }
+     
+  .interactive-btn {
+    font-size: 20px;
+    padding: 15px;
+    font-size: 1.2rem;
+    background-color: #BB35AE;
+    border: none;
+    border-radius: 10px;
+    transition: all 0.5s ease;
+    color: white;
+      }
+
+  .interactive-btn:hover {
+    background-color: #E99FF4;
+    color: white;
+    }
+
+  body {
+    
+    background: #BB35AE;
+    background: linear-gradient(270deg, rgba(187, 53, 174, 1) 0%, rgba(245, 187, 44, 1) 50%, rgba(233, 159, 244, 1) 100%);
+    background-size: cover;      
+    background-position: center;  
+    background-repeat: no-repeat; 
+  }
+
+   body {
+   font-size: 20px; 
+   line-height: 1.6; 
+   }
+   h2, h3 {
+   font-size: 36px;
+   }
+
+  
+
+  .photo {
+      width: 100%;
+      cursor: pointer;
+      border-radius: 10px;
+      transition: transform 0.3s ease;
+      margin-bottom: 0px;
+    }
+
+  .photo:hover {
+      transform: scale(1.03);
+    }
+
+  .info-box {
+      display: none;
+      margin-top: 0px;
+      padding: 20px;
+      background-color: #f0f0f0;
+      border-left: 6px solid #BB35AE;
+      border-radius: 10px;
+      text-align: left;
+      font-family: sans-serif;
+      font-size: 16px;
+  }
+
+  .row-container {
+    display: flex;
+    gap: 30px;
+    justify-content: center;
+    flex-wrap: wrap; /* для адаптивності */
+    margin-top: 40px;
+  }
+
+
+
+
+
+
+  
+
+  .photo {
+    width: 100%;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+  }
+
+  .photo:hover {
+    transform: scale(1.03);
+  }
+
+  .info-box {
+    display: none;
+    margin-top: 6px;
+    background-color: #f0f0f0;
+    border-left: 6px solid #BB35AE;
+    border-radius: 10px;
+    padding: 15px;
+    text-align: left;
+    font-size: 16px;
+  }
+
+  .row-container {
+  display: flex;
+  flex-wrap: wrap;          /* адаптивність — стає в стовпчик на малих екранах */
+  justify-content: center;  /* центрує по горизонталі */
+  gap: 30px;                /* відстань між камерами */
+  margin-top: 40px;
+}
+
+.camera-box {
+  width: 300px;
+  text-align: center;
+}
+
+
+  </style>
+</head>
+<body>
+ 
+  <nav class="navbar navbar-expand-lg">
+
+    <div class="container-fluid">
+
+      <a class="navbar-brand" href="#">Camera Club</a>
+      <div>
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0 d-flex flex-row gap-3">
+          <li class="nav-item"><a class="nav-link" href="#home">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="#camera">Camera</a></li>
+          <li class="nav-item"><a class="nav-link" href="#photos">Photos</a></li>
+          <li class="nav-item"><a class="nav-link" href="#reviews">Reviews</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <div>
+    <img class="mySlides img-fluid" src="1.jpg" alt="Camera 1" style="width:100%">
+    <img class="mySlides img-fluid" src="2.jpg" alt="Camera 2" style="width:100%">
+    <img class="mySlides img-fluid" src="3.jpg" alt="Camera 3" style="width:100%">
+  </div>
+
+<script>
+
+var myIndex = 0;
+carousel();
+
+function carousel() {
+  var i;
+  var x = document.getElementsByClassName("mySlides");
+  for (i = 0; i < x.length; i++) {
+    x[i].style.display = "none";
+  }
+  myIndex++;
+  if (myIndex > x.length) {myIndex = 1}
+  x[myIndex-1].style.display = "block";
+  setTimeout(carousel, 3000);
+}
+</script>
+
+
+// ЛОГІН:
+
+<script>
+  document.getElementById("login-form").addEventListener("submit", function (e) {
+    e.preventDefault();
+
+    const email = document.getElementById("email").value.trim();
+    const password = document.getElementById("password").value.trim();
+    const errorBox = document.getElementById("login-error");
+
+    if (email === "" || password === "") {
+      errorBox.textContent = "Будь ласка, заповніть усі поля!";
+      return;
+    }
+
+    // Надсилаємо POST-запит через fetch
+    fetch("https://example.com/api/login", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ email, password }),
+    })
+    .then((response) => response.json())
+    .then((data) => {
+      if (data.success) {
+        alert("✅ " + data.message);
+        errorBox.textContent = "";
+      } else {
+        errorBox.textContent = "❌ " + data.message;
+      }
+    })
+    .catch((error) => {
+      console.error("Помилка при запиті:", error);
+      errorBox.textContent = "⚠️ Сталася помилка з'єднання.";
+    });
+  });
+</script>
+
+
+
+  <div class="container mt-4">
+
+    <div id="items-container" class="row"></div>
+
+    <!-- Заголовок і опис -->
+  <div class="container text-center my-4">
+    <h2 class="display-5">THE CAMERA CLUB</h2>
+    <p class="text-muted"><i>We love to shoot photos!</i></p>
+  </div>
+
+  <!-- Основний текст -->
+  <div class="container text-center mb-5">
+    <p>This website will help you to discover new cameras and photos, and help you choose THE one!</p>
+  </div>
+
+   <div class="text-center mt-5">
+  <h2>User login</h2>
+  <form id="login-form" class=" p-4 mx-auto mb-4" style="max-width: 400px;">
+    <div class="mb-3 text-start">
+      <label for="email" class="form-label">Email:</label>
+      <input type="email" id="email" class="form-control" required>
+    </div>
+    <div class="mb-3 text-start">
+      <label for="password" class="form-label">Password:</label>
+      <input type="password" id="password" class="form-control" required>
+    </div>
+    <button type="submit" class="btn w-100 interactive-btn">Log in</button>
+    <div id="login-error" class="text-danger mt-2"></div>
+  </form>
+</div>
+
+
+
+  
+
+<div class="row-container">
+  <!-- 📸 Камера 1 -->
+  <div class="camera-box">
+    <img src="canon_powershot_A580.png" alt="Fujifilm" class="photo" id="img1">
+    <div class="info-box" id="desc1">
+      <strong>Опис:</strong> Це стильна камера, що ідеально підходить для вуличної фотографії, має 24 мегапікселі, яскравий об'єктив та класичний дизайн.
+    </div>
+  </div>
+
+  <!-- 📸 Камера 2 -->
+  <div class="camera-box">
+    <img src="fujifilm x100 vi.png" alt="Canon R6" class="photo" id="img2">
+    <div class="info-box" id="desc2">
+      <strong>Опис:</strong> Потужна повнокадрова камера з чудовим автофокусом і стабілізацією для професійної зйомки.
+    </div>
+  </div>
+</div>
+
+<script>
+  const pairs = [
+    { img: 'img1', desc: 'desc1' },
+    { img: 'img2', desc: 'desc2' }
+  ];
+
+  pairs.forEach(({ img, desc }) => {
+    const image = document.getElementById(img);
+    const box = document.getElementById(desc);
+    image.addEventListener("click", () => {
+      box.style.display = box.style.display === "block" ? "none" : "block";
+    });
+  });
+</script>
+
+
+
+
+
+
+
+
+
+
+<div class="container my-5 d-flex flex-column align-items-center">
+  <h3>What is ur favourite camera brand?</h3>
+  <form id="survey-form" style="max-width: 525px; width: 100%;">
+    <label><input type="radio" name="camera" value="Canon" required> Canon</label><br>
+    <label><input type="radio" name="camera" value="Nikon"> Nikon</label><br>
+    <label><input type="radio" name="camera" value="Sony"> Sony</label><br>
+    <label><input type="radio" name="camera" value="Lumix"> Lumix</label><br>
+    <label><input type="radio" name="camera" value="️Olympus">Olympus</label><br>
+    <button type="submit" class="btn w-100 interactive-btn mt-3">Send</button>
+  </form>
+  <div id="result" class="mt-3"></div>
+</div>
+
+
+  
+<script>
+  // AJAX-запит до серверу з періодичним оновленням
+  async function fetchLatestCameras() {
+    try {
+      const response = await fetch('http://localhost:3000/api/cameras');
+      if (!response.ok) throw new Error('Помилка при завантаженні');
+
+      const data = await response.json();
+      const container = document.getElementById('items-container');
+      container.innerHTML = ''; 
+
+      data.forEach(camera => {
+        const card = document.createElement('div');
+        card.className = 'col-md-4 mb-4';
+        card.innerHTML = `
+          <div class="card h-100 text-center">
+            <img src="${camera.thumbnailUrl}" class="card-img-top" alt="${camera.title}">
+            <div class="card-body">
+              <h5 class="card-title">${camera.title}</h5>
+            </div>
+          </div>
+        `;
+        container.appendChild(card);
+      });
+    } catch (error) {
+      console.error("⚠️ Не вдалося оновити камери:", error);
+    }
+  }
+
+  // Викликаємо при завантаженні та періодично
+  document.addEventListener('DOMContentLoaded', () => {
+    fetchLatestCameras();                   // одразу
+    setInterval(fetchLatestCameras, 5000);  // кожні 5 секунд
+  });
+</script>
+
+
+</body>
+</html>
