@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="uk">
+<html lang="eng">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Camera Club</title>
+  <title>Camera Club Website</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
 
@@ -60,7 +60,6 @@
     }
 
   body {
-    
     background: #BB35AE;
     background: linear-gradient(270deg, rgba(187, 53, 174, 1) 0%, rgba(245, 187, 44, 1) 50%, rgba(233, 159, 244, 1) 100%);
     background-size: cover;      
@@ -68,15 +67,13 @@
     background-repeat: no-repeat; 
   }
 
-   body {
-   font-size: 20px; 
-   line-height: 1.6; 
-   }
-   h2, h3 {
-   font-size: 36px;
-   }
-
-  
+    body {
+    font-size: 20px; 
+    line-height: 1.6; 
+    }
+    h2, h3 {
+    font-size: 36px;
+    }
 
   .photo {
       width: 100%;
@@ -147,10 +144,6 @@
   width: 300px;
   text-align: center;
 }
- 
-
-
-
 
 
 
@@ -177,16 +170,17 @@ html {
   scroll-behavior: smooth;
 }
 .filmstrip {
+  width: 100vw;           
+  margin-left: calc(-50vw + 50%); 
   overflow: hidden;
   white-space: nowrap;
-  width: 100%;
   background: black;
-  border: 6px solid #fff;
+  border: 6px solid black;
+  padding: 10px 0;
 }
-
 .filmstrip-track {
-  display: flex; /* flex замість inline-block */
-  animation: scroll 20s linear infinite; /* подовжити час для плавності */
+  display: flex;
+  animation: scroll 20s linear infinite;
 }
 
 .filmstrip-track img {
@@ -208,6 +202,8 @@ img {
 
   </style>
 </head>
+
+
 <body>
  
   <nav class="navbar navbar-expand-lg">
@@ -266,7 +262,7 @@ function carousel() {
     <p>This website will help you to discover new cameras and photos, and help you choose THE one!</p>
   </div>
 
- <div id="photos", class="container my-5">
+ <div id="photos", class="my-5 p-0">
   <div class="filmstrip">
     <div class="filmstrip-track">
       <img src="photo1.jpg" alt="">
@@ -398,7 +394,7 @@ function carousel() {
 </div>
 
 <script>
-  // AJAX-запит до серверу з періодичним оновленням
+  // періодичне оновлення
   async function fetchLatestCameras() {
     try {
       const response = await fetch('http://localhost:3000/api/cameras');
@@ -422,7 +418,7 @@ function carousel() {
         container.appendChild(card);
       });
     } catch (error) {
-      console.error("⚠️ Не вдалося оновити камери:", error);
+      console.error("Не вдалося оновити камери:", error);
     }
   }
 
@@ -433,7 +429,7 @@ function carousel() {
   });
 </script>
 
-<script>   // Щоб зберігалась відповідь
+<script>   // збереження відповіді
   document.getElementById("survey-form").addEventListener("submit", function(event) {
     event.preventDefault(); 
     const selected = document.querySelector('input[name="camera"]:checked');
